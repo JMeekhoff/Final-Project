@@ -1,0 +1,79 @@
+package meekhoff.james;
+
+import java.text.MessageFormat;
+import javafx.scene.Scene;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+
+/** PROJECT DESCRIPTION:
+ * 
+ * Programming Exercise 15.3: This program displays a rectangle centered at he points provided 
+ * in the exercises instructions (100, 60) with a height and width of 100, and 40 respectively.
+ * This program will be able to indicate whether or not the mouse point is inside or outside of 
+ * the rectangle and will display it on the window. To detect the presence of the pointer, and 
+ * whether it is inside or outside of the polygon, use the contains method that is defined in 
+ * the Node class.
+ *
+ */
+
+public class Final_Project_15_13 extends Application {
+  static final double WIDTH = 400;
+  static final double HEIGHT = 150;
+  static double mouseX;
+  static double mouseY;
+  
+  public static void main(String[] args) {
+    Application.launch(args);
+}
+// This creates the actual rectangle and determines how it is positioned. As well as the width and the height.
+  
+  @Override
+  public void start(Stage stage) throws Exception {
+      Text message = new Text(rectangle.getWidth() / 2, rectangle.getHeight() / 2, "");
+      pane.getChildren().add(rectangle);
+      pane.getChildren().add(message);
+      Scene scene = new Scene(pane, WIDTH, HEIGHT);
+
+// Creates the rectangle. 
+      
+      Pane pane = new Pane();
+      Rectangle rectangle = new Rectangle(100, 60, 100, 40);
+      rectangle.setFill(Color.TRANSPARENT);
+      rectangle.setStroke(Color.BLACK);
+
+// This actually finds whether the mouse is in the rectangle or not. 
+   
+     boolean isMousePointInsideRectangle(double mouseX, double mouseY, Rectangle rectangle )  {
+        return rectangle.contains(mouseX, mouseY);
+    }
+     
+// This displays whether or not the cursor is inside or outside the polygon (Rectangle)
+      
+      scene.setOnMouseMoved(mouseEvent -> {
+          mouseX = mouseEvent.getSceneX();
+          mouseY = mouseEvent.getSceneY();
+          if (isMousePointInsideRectangle(mouseX, mouseY, rectangle)) {
+              message.setText("Mouse point is inside the rectangle");
+          } else {
+              message.setText("Mouse point is outside the rectangle");
+          }
+          message.setX(mouseX);
+          message.setY(mouseY);
+      });
+
+      stage.setTitle(getClass().getName()); {
+      stage.setScene(scene);
+      stage.show();
+ // This is the section that contains our Big O Examination. 
+      
+      public class BigONotation {
+        
+      }
+
+
+}
+}
+
+}
